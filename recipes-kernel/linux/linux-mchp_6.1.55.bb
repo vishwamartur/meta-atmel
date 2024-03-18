@@ -4,7 +4,8 @@ FILESEXTRAPATHS:prepend := "${THISDIR}/${P}:"
 PV = "6.1+git${SRCPV}"
 
 KBRANCH = "linux-6.1-mchp"
-SRC_URI = "git://github.com/linux4microchip/linux.git;protocol=https;branch=${KBRANCH}"
+SRC_URI = "git://github.com/linux4microchip/linux.git;protocol=https;branch=${KBRANCH} \
+           file://userinput.cfg"
 SRC_URI:append:sam9x60 = " file://defconfig"
 SRC_URI:append:sama5 = " file://defconfig"
 SRC_URI:append:sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
