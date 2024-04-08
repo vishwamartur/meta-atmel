@@ -36,13 +36,13 @@ do_configure:append() {
 
 do_deploy:append() {
 	if [ "${UBOOT_FIT_IMAGE}" = "xyes" ]; then
-		DTB_PATH="${B}/arch/${ARCH}/boot/dts/"
+		DTB_PATH="${B}/arch/${ARCH}/boot/dts/microchip/"
 		if [ ! -e "${DTB_PATH}" ]; then
-			DTB_PATH="${B}/arch/${ARCH}/boot/"
+			DTB_PATH="${B}/arch/${ARCH}/boot/dts/microchip/"
 		fi
 
-		if [ -e ${S}/arch/${ARCH}/boot/dts/${MACHINE}.its ]; then
-			cp ${S}/arch/${ARCH}/boot/dts/${MACHINE}*.its ${DTB_PATH}
+		if [ -e ${S}/arch/${ARCH}/boot/dts/microchip/${MACHINE}.its ]; then
+			cp ${S}/arch/${ARCH}/boot/dts/microchip/${MACHINE}*.its ${DTB_PATH}
 			cd ${DTB_PATH}
 			mkimage -f ${MACHINE}.its ${MACHINE}.itb
 			install -m 0644 ${MACHINE}.itb ${DEPLOYDIR}/${MACHINE}.itb
