@@ -107,8 +107,7 @@ IMAGE_INSTALL:append:at91sam9x5 = " \
 
 IMAGE_INSTALL:append:sam9x60 = " \
 	hostapd \
-	bonnie++ \
-	libm2d "
+	bonnie++ "
 
 IMAGE_INSTALL:append:sam9x75 = " \
         bonnie++ \
