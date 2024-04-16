@@ -3,6 +3,8 @@ require linux.inc
 FILESEXTRAPATHS:prepend := "${THISDIR}/${P}:"
 PV = "5.15+git${SRCPV}"
 
+LINUX_VERSION="5.15"
+
 KBRANCH = "linux-5.15-mchp"
 SRC_URI = "git://github.com/linux4microchip/linux.git;protocol=https;branch=${KBRANCH}"
 SRC_URI:append:sam9x60 = " file://defconfig"

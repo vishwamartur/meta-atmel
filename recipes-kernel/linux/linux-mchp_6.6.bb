@@ -3,6 +3,8 @@ require linux.inc
 FILESEXTRAPATHS:prepend := "${THISDIR}/${P}:"
 PV = "6.6+git${SRCPV}"
 
+LINUX_VERSION="6.6"
+
 KBRANCH = "linux-6.6-mchp"
 SRC_URI = "git://github.com/linux4microchip/linux.git;protocol=https;branch=${KBRANCH} \
            file://userinput.cfg"

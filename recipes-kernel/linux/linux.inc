@@ -9,9 +9,21 @@ RDEPENDS:${KERNEL_PACKAGE_NAME}-base = ""
 
 S = "${WORKDIR}/git"
 
+PLATFORM_PATH ??= ""
+
 python __anonymous () {
     if d.getVar('UBOOT_FIT_IMAGE', True) == 'xyes':
         d.appendVar('DEPENDS', ' u-boot-mkimage-native dtc-native')
+
+    # Verify whether the kernel version is 6.6 or later and update the
+    # device tree paths by prefixing them with our platform name.
+
+    if d.getVar('LINUX_VERSION', True) >= '6.6':
+        devicetree = d.getVar('KERNEL_DEVICETREE', True).split()
+        devicetree = ['microchip/' + dtb for dtb in devicetree]
+        d.setVar('KERNEL_DEVICETREE', ' '.join(devicetree))
+        d.setVar('PLATFORM_PATH', 'microchip/')
+        d.setVar('DTB_PATH', '${B}/arch/${ARCH}/boot/dts/microchip/')
 }
 
 do_configure:append() {
@@ -36,13 +48,12 @@ do_configure:append() {
 
 do_deploy:append() {
 	if [ "${UBOOT_FIT_IMAGE}" = "xyes" ]; then
-		DTB_PATH="${B}/arch/${ARCH}/boot/dts/microchip/"
 		if [ ! -e "${DTB_PATH}" ]; then
-			DTB_PATH="${B}/arch/${ARCH}/boot/dts/microchip/"
+			DTB_PATH="${B}/arch/${ARCH}/boot/"
 		fi
 
-		if [ -e ${S}/arch/${ARCH}/boot/dts/microchip/${MACHINE}.its ]; then
-			cp ${S}/arch/${ARCH}/boot/dts/microchip/${MACHINE}*.its ${DTB_PATH}
+		if [ -e ${S}/arch/${ARCH}/boot/dts/${PLATFORM_PATH}${MACHINE}.its ]; then
+		        cp ${S}/arch/${ARCH}/boot/dts/${PLATFORM_PATH}${MACHINE}*.its ${DTB_PATH}
 			cd ${DTB_PATH}
 			mkimage -f ${MACHINE}.its ${MACHINE}.itb
 			install -m 0644 ${MACHINE}.itb ${DEPLOYDIR}/${MACHINE}.itb
