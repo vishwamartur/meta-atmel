@@ -5,6 +5,8 @@ require conf/machine/include/bootloaders.inc
 
 SOC_FAMILY = "sama7"
 
+KERNEL_CONFIG_COMMAND = "oe_runmake -C ${S} O=${B} sama7_defconfig"
+
 PREFERRED_PROVIDER_virtual/kernel:sama7 ?= "linux-mchp"
 PREFERRED_PROVIDER_virtual/bootloader:sama7 ?= "u-boot-mchp"
 PREFERRED_PROVIDER_u-boot:sama7 ?= "u-boot-mchp"
