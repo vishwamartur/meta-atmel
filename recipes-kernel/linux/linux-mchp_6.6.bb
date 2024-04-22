@@ -21,7 +21,7 @@ SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
 SRCREV = "468020704fb532825a8482bdbfd7f33ba962ea0c"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
-KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc1000-sdio"
+KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc-sdio"
 
 COMPATIBLE_MACHINE = "(at91sam9x5ek|at91sam9m10g45ek|at91sam9rlek\
 |sama5d2-xplained|sama5d2-xplained-sd|sama5d2-xplained-emmc\
