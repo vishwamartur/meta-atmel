@@ -34,67 +34,39 @@ EXTRA_OECMAKE = " \
 
 CFLAGS += "-fcommon"
 
-do_install:append:sama5d2() {
+i2c_addr() {
+    case $1 in
+        sama5d2-icp-sd) machine_i2c_addr="0xC0,1" ;;
+        sama5d2-ptc-ek) machine_i2c_addr="0xC0,1" ;;
+        sama5d2-ptc-ek-sd) machine_i2c_addr="0xC0,1" ;;
+        sama5d2-xplained) machine_i2c_addr="0xC0,2" ;;
+        sama5d2-xplained-sd) machine_i2c_addr="0xC0,2" ;;
+        sama5d27-som1-ek-sd) machine_i2c_addr="0xC0,0" ;;
+        sama5d27-wlsom1-ek-sd) machine_i2c_addr="0x6A,0" ;;
+        sama5d29-curiosity-sd) machine_i2c_addr="0x6A,1" ;;
+        sama7g5ek-sd) machine_i2c_addr="0xC0,1" ;;
+        sama7g5ek-emmc) machine_i2c_addr="0xC0,1" ;;
+        sam9x60ek-sd) machine_i2c_addr="0x6A,1" ;;
+        sam9x60-curiosity-sd) machine_i2c_addr="0x6A,0" ;;
+        sam9x75-curiosity-sd) machine_i2c_addr="0x6A,1" ;;
+        *) machine_i2c_addr="" ;;
+    esac
+}
+
+do_install:append() {
+    i2c_addr ${MACHINE}
+
+    # Install module and conf for all machines
     install -Dm 644 ${WORKDIR}/cryptoauthlib.module ${D}${datadir}/p11-kit/modules/cryptoauthlib.module
     cp -p ${D}${localstatedir}/lib/cryptoauthlib/slot.conf.tmpl ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
 
-do_install:append:sama7() {
-    install -Dm 644 ${WORKDIR}/cryptoauthlib.module ${D}${datadir}/p11-kit/modules/cryptoauthlib.module
-    cp -p ${D}${localstatedir}/lib/cryptoauthlib/slot.conf.tmpl ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
 
-do_install:append:sam9x60() {
-    install -Dm 644 ${WORKDIR}/cryptoauthlib.module ${D}${datadir}/p11-kit/modules/cryptoauthlib.module
-    cp -p ${D}${localstatedir}/lib/cryptoauthlib/slot.conf.tmpl ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama5d2-xplained board, the ATECC608A Secure4 click board must be connected to the XPRO EXT2 socket
-
-do_install:append:sama5d2-xplained() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,2/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-do_install:append:sama5d2-xplained-sd() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,2/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama5d27-som1-ek board, the ATECC608A is embedded in the SOM
-do_install:append:sama5d27-som1-ek-sd() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama5d27-wlsom1-ek board, the ATECC608A is embedded in the SOM
-do_install:append:sama5d27-wlsom1-ek-sd() {
-    sed -i "s/interface = .*/interface = i2c,0x6A,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama5d2-icp board, the ATECC608A is embedded in the PCB
-do_install:append:sama5d2-icp-sd() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama5d2-ptc-ek board, the ATECC608A Secure4 click board must be connected to the XPRO EXT1 socket
-do_install:append:sama5d2-ptc-ek() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-do_install:append:sama5d2-ptc-ek-sd() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sama7g5ek board, the ATECC608A is embedded in the PCB
-do_install:append:sama7g5ek-sd() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-do_install:append:sama7g5ek-emmc() {
-    sed -i "s/interface = .*/interface = i2c,0xC0,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-
-# On sam9x60ek and sam9x60-curiosity boards, the ATECC608B TRUST click board must be connected to the mikro bus
-do_install:append:sam9x60ek-sd() {
-    sed -i "s/interface = .*/interface = i2c,0x6A,1/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
-}
-do_install:append:sam9x60-curiosity-sd() {
-    sed -i "s/interface = .*/interface = i2c,0x6A,0/"  ${D}${localstatedir}/lib/cryptoauthlib/0.conf
+    # Update interface using the machine specific I2C address
+    if [ -z "${machine_i2c_addr}" ]; then
+      echo "Warning: I2C address not found for machine: ${MACHINE}"
+    else
+      sed -i "s/interface = .*/interface = i2c,${machine_i2c_addr}/" ${D}${localstatedir}/lib/cryptoauthlib/0.conf
+    fi
 }
 
 FILES:${PN} = "${libdir}/libcryptoauth.so \
