@@ -11,7 +11,7 @@ DEPENDS = " libegt"
 
 SRC_URI = "gitsm://github.com/linux4sam/egt-thermostat.git;protocol=https;branch=master"
 
-SRCREV = "10143db466bf2c8c42cb8c06082794cc6955ea79"
+SRCREV = "b9b6c0a3393e8ef4008ba40b09f005bf57c4216a"
 
 S = "${WORKDIR}/git"
 

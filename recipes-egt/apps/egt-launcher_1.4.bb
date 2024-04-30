@@ -15,7 +15,7 @@ SRC_URI = "git://github.com/linux4sam/egt-launcher.git;protocol=https;branch=mas
 	  file://0001-launch.sh-use-systemctl-to-restart-egt.patch"
 
 PV = "1.4+git${SRCPV}"
-SRCREV = "e475c6bad6111816c7f4d38111386800ddcef35a"
+SRCREV = "49923b576e1f6a1de83ce4366b68d34eb53f4586"
 
 S = "${WORKDIR}/git"
 
