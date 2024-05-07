@@ -1,7 +1,10 @@
 FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
-SRC_REV = "acb0885c117e73cb6c5c9b1dd9054cb3f93507ee"
+SRCREV = "3eac340a781c00ccd61b151b0e9c22a8c6e9f9f0"
 
-PV = "4.0.0+git${SRCPV}"
+DEPENDS:append = " util-linux-libuuid"
+inherit pkgconfig
+
+PV = "4.2.0+git${SRCPV}"
 
 COMPATIBLE_MACHINE = "(sama5d27-som1-ek-optee-sd)"
