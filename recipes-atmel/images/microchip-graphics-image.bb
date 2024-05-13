@@ -126,7 +126,9 @@ IMAGE_INSTALL:append:sama5d4 = " \
 IMAGE_INSTALL:append:sama5d2-ptc-ek = " ptc-examples"
 IMAGE_INSTALL:append:sama5d2-ptc-ek-sd = " ptc-examples"
 
-IMAGE_INSTALL:append:sama5d27-wlsom1-ek-sd = " ptc-examples"
+IMAGE_INSTALL:append:sama5d27-wlsom1-ek-sd = " ptc-examples \
+                                               wilc-demo-fs-overlay \
+                                               "
 
 IMAGE_INSTALL:append:sama5d2 = " video-capture-at91 \
 				libv4l v4l-utils media-ctl yavta \
