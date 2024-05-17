@@ -18,7 +18,7 @@ sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
                               "
 SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
 
-SRCREV = "1757d3c50a2eabfb8c3741dc93700427c9d241dd"
+SRCREV = "878cd8fe74bb28ea8a6a128925ba86c041f3d593"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc-sdio"
