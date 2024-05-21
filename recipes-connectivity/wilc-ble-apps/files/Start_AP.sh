@@ -27,23 +27,32 @@ else
         else
                 echo "WILC-SDIO module insert failed"
 		exit 0
-        fi
+	fi
 fi
+
 echo "2.############## Bringing up the wlan0 interface ##############"
-networkctl up wlan0
 if ifconfig | grep -q "wlan0" ; then
         echo "Wireless LAN interface is UP!"
 else
-        echo "Wireless LAN interface has FAILED"
-	exit 0
+	echo "Wireless LAN interface has FAILED"
+	echo "2. Reloading the wilc-sdio module"
+	modprobe -r wilc-sdio
+	modprobe wilc-sdio
+	if lsmod | grep -q "wilc_sdio";  then
+		echo "WILC-SDIO module insterted successfully"
+	else
+		echo "WILC-SDIO module insert failed"
+		exit 0
+	fi
 fi
 
-cp /lib/systemd/network/80-wifi-softap.network.example /etc/systemd/network/wlan0.network
-
-echo "2.############# Stopping wpa_supplicant service if any ####"
+echo "3.############# Stopping wpa_supplicant service if any ####"
 systemctl stop wpa_supplicant.service
-echo "3.############# Restarting systemd-networkd service #######"
-systemctl restart systemd-networkd.service
+
+echo "4.############# Loading network configuration  #######"
+cp /lib/systemd/network/80-wifi-softap.network.example /etc/systemd/network/wlan0.network
+networkctl reload
+
 echo "4.############## Starting the Host AP deamon ##############"
 systemctl start hostapd@open.service
 
