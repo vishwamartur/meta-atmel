@@ -5,8 +5,8 @@ PV = "6.6+git${SRCPV}"
 
 LINUX_VERSION="6.6"
 
-KBRANCH = "linux-6.6-mchp"
-SRC_URI = "git://github.com/linux4microchip/linux.git;protocol=https;branch=${KBRANCH} \
+KBRANCH = "sama7d65_ea"
+SRC_URI = "git://github.com/linux4sam/linux-at91.git;protocol=https;branch=${KBRANCH} \
            file://userinput.cfg"
 
 # kernel fragments
@@ -18,7 +18,7 @@ sama5d27-som1-ek-optee-sd = " file://sama5-linux-optee.cfg \
                               "
 SRC_URI:append:sam9x60    = " file://at91_dt.cfg"
 
-SRCREV = "bf96df830936986fdb3c7789749ff599300dae01"
+SRCREV = "bf83363384b3ebcab844a7649ad21d64f07357d7"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc-sdio"
@@ -35,4 +35,5 @@ COMPATIBLE_MACHINE = "(at91sam9x5ek|at91sam9m10g45ek|at91sam9rlek\
 |sama7g5ek|sama7g5ek-sd\
 |sam9x60-curiosity|sam9x60-curiosity-sd|sam9x60ek|sam9x60ek-sd\
 |sam9x75-curiosity|sam9x75-curiosity-sd|sam9x75eb|sam9x75eb-sd\
+|sama7d65-curiosity|sama7d65-curiosity-sd\
 )"
