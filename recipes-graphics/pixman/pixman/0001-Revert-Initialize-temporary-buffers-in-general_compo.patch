@@ -11,6 +11,7 @@ causes performance issues with EGT:
 - egt_drop very slow for all devices.
 
 Signed-off-by: Ludovic Desroches <ludovic.desroches@microchip.com>
+Upstream-Status: Pending
 ---
  pixman/pixman-general.c | 6 ------
  1 file changed, 6 deletions(-)

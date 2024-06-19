@@ -16,6 +16,7 @@ Create /var/lib/kea and /var/run/kea folder to fix below error:
 
 Signed-off-by: Mingli Yu <mingli.yu@windriver.com>
 Signed-off-by: Dharma Balasubiramani <dharma.b@microchip.com>
+Upstream-Status: Pending
 ---
  src/bin/keactrl/keactrl.in | 2 ++
  1 file changed, 2 insertions(+)
