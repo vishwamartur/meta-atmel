@@ -17,6 +17,7 @@ PACKAGECONFIG:remove = " \
     pam \
     quotacheck \
     randomseed \
+    seccomp \
     smack \
     sysusers \
     sysvinit \
