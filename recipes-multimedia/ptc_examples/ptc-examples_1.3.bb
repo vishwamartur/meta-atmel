@@ -32,7 +32,7 @@ do_compile () {
 do_install () {
     install -D -m 0755 --target-directory=${D}/usr/bin ${S}/src/ptc_qt*_demo
     install -D -m 0755 --target-directory=${D}/home/root ${S}/src/start_ptc_qt*
-    install -D -m 0644 --target-directory=${D}/lib/firmware/microchip \
+    install -D -m 0644 --target-directory=${D}${base_libdir}/firmware/microchip \
                        ${S}/fw/*.bin ${S}/cfg/*.bin
 }
 
