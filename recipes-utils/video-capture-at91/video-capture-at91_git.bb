@@ -14,10 +14,10 @@ S = "${WORKDIR}/git"
 do_install () {
 	for SOC in $(echo ${SOC_FAMILY} | tr ":" "\n")
 	do
-		install -d ${D}${ROOT_HOME}/video-capture-at91
-		cp -r ${S}/${SOC}/* ${D}${ROOT_HOME}/video-capture-at91/ || true
-		cp -r ${S}/utils.sh ${D}${ROOT_HOME}/ || true
+		install -d ${D}/home/root/video-capture-at91
+		cp -r ${S}/${SOC}/* ${D}/home/root/video-capture-at91/ || true
+		cp -r ${S}/utils.sh ${D}/home/root/ || true
 	done
 }
 
-FILES:${PN} += "${ROOT_HOME}"
+FILES:${PN} += "/home/root/"
