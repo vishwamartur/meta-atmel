@@ -26,26 +26,26 @@ Sources
 =======
 - meta-atmel
 URI: https://github.com/linux4sam/meta-atmel.git
-Branch: kirkstone
-Tag:linux4microchip-2024.04
+Branch: scarthgap
+Tag/commit:d48c7e6656214034cd6ee055c893849f079587c1
 
 Dependencies
 ============
 This Layer depends on :
 - poky
 URI: https://git.yoctoproject.org/poky
-Branch: kirkstone
-Tag:yocto-4.0.17
+Branch: scarthgap
+Tag:scarthgap-5.0.1
 
 - meta-openembedded
 URI: https://git.openembedded.org/meta-openembedded
-Branch: kirkstone
-Tag/commit:8bb16533532b6abc2eded7d9961ab2a108fd7a5b
+Branch: scarthgap
+Tag/commit:78a14731cf0cf38a19ff8bd0e9255b319afaf3a7
 
 - meta-arm (for optee components)
 URI: https://git.yoctoproject.org/meta-arm
-Branch: kirkstone
-Tag:yocto-4.0.2
+Branch: scarthgap
+Tag:yocto-5.0
 
 Build procedure
 ===============
@@ -56,19 +56,19 @@ cd my_dir
 
 1/ Clone yocto/poky git repository with the proper branch ready
 git clone https://git.yoctoproject.org/poky && cd poky && \
-git checkout -b kirkstone yocto-4.0.17 && cd -
+git checkout -b scarthgap scarthgap-5.0.1 && cd -
 
 2/ Clone meta-openembedded git repository with the proper branch ready
 git clone git://git.openembedded.org/meta-openembedded && \
-cd meta-openembedded && git checkout -b kirkstone 8bb165 && cd -
+cd meta-openembedded && git checkout -b scarthgap 78a147 && cd -
 
 3/ Clone meta-atmel layer with the proper branch ready
 git clone https://github.com/linux4sam/meta-atmel.git
-git checkout -b kirkstone linux4microchip-2024.04 && cd -
+git checkout -b scarthgap 7340ed && cd -
 
 4/ Clone meta-arm layer with the proper branch ready
 git clone https://git.yoctoproject.org/meta-arm && cd meta-arm && \
-git checkout -b kirkstone yocto-4.0.2 && cd -
+git checkout -b scarthgap yocto-5.0 && cd -
 
 5/ Enter the poky directory to configure the build system and start the build process
 cd poky
@@ -107,27 +107,27 @@ MACHINE=sama5d2-xplained-sd bitbake microchip-graphics-image
 Typical bitbake output
 ======================
 Build Configuration:
-BB_VERSION           = "2.0.0"
+BB_VERSION           = "2.8.0"
 BUILD_SYS            = "x86_64-linux"
 NATIVELSBSTRING      = "universal"
 TARGET_SYS           = "arm-poky-linux-gnueabi"
 MACHINE              = "sam9x75-curiosity-sd"
 DISTRO               = "poky-atmel"
-DISTRO_VERSION       = "4.0.17"
+DISTRO_VERSION       = "5.0.1"
 TUNE_FEATURES        = "arm armv5 thumb dsp"
 TARGET_FPU           = "soft"
 meta                 
 meta-poky            
-meta-yocto-bsp       = "heads/kirkstone-4.0.17:6d1a878bbf24c66f7186b270f823fcdf82e35383"
+meta-yocto-bsp       = "heads/scarthgap-5.0.1:4b07a5316ed4b858863dfdb7cab63859d46d1810"
 meta-oe
 meta-networking
 meta-webserver
 meta-python
-meta-initramfs       = "8bb16533532b6abc2eded7d9961ab2a108fd7a5b:8bb16533532b6abc2eded7d9961ab2a108fd7a5b"
-meta-atmel           = "heads/linux4microchip-2024.04-rc2:fd6500c866002b78e8ec752e11e34cff0acbc044"
-meta-multimedia      = "8bb16533532b6abc2eded7d9961ab2a108fd7a5b:8bb16533532b6abc2eded7d9961ab2a108fd7a5b"
+meta-initramfs       = "78a14731cf0cf38a19ff8bd0e9255b319afaf3a7:78a14731cf0cf38a19ff8bd0e9255b319afaf3a7"
+meta-atmel           = "1b0fa4c623bc63f45c61b13c786ec351a8e2c302:1b0fa4c623bc63f45c61b13c786ec351a8e2c302"
+meta-multimedia      = "78a14731cf0cf38a19ff8bd0e9255b319afaf3a7:78a14731cf0cf38a19ff8bd0e9255b319afaf3a7"
 meta-arm
-meta-arm-toolchain   = "heads/yocto-4.0.2:96aad3b29aa7a5ee4df5cf617a6336e5218fa9bd"
+meta-arm-toolchain   = "heads/yocto-5.0:8aa8a1f17f5b64bc691544f989f04fc83df98adb"
 
 Contributing
 ============
