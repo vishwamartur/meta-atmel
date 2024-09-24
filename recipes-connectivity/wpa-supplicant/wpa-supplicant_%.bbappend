@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/wpa_supplicant-${PV}/:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/files/:"
 
 PACKAGECONFIG ??= "openssl"
 
