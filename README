@@ -81,7 +81,7 @@ reference.
 
 6/ Inside the .templateconf file, you will need to modify the TEMPLATECONF
 variable to match the path to the meta-atmel layer "conf" directory:
-export TEMPLATECONF=${TEMPLATECONF:-../meta-atmel/conf}
+export TEMPLATECONF=${TEMPLATECONF:-../meta-atmel/conf/templates/default}
 
 7/ Initialize build directory
 source oe-init-build-env build-microchip
