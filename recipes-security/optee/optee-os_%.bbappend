@@ -10,7 +10,7 @@ SRC_URI:append = " file://0001-plat-sam-remove-NVMEM_HUK.patch"
 
 PV = "4.2.0+git${SRCPV}"
 
-COMPATIBLE_MACHINE = "(sama5d27-som1-ek-optee-sd)"
+COMPATIBLE_MACHINE = "(sama5d27-som1-ek-optee-sd|sama7g5ek-optee-sd)"
 
 OPTEE_SUFFIX ?= "bin"
 OPTEE_IMAGE ?= "tee-${MACHINE}-${PV}-${PR}.${OPTEE_SUFFIX}"

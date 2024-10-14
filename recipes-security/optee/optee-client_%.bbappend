@@ -7,4 +7,4 @@ inherit pkgconfig
 
 PV = "4.2.0+git${SRCPV}"
 
-COMPATIBLE_MACHINE = "(sama5d27-som1-ek-optee-sd)"
+COMPATIBLE_MACHINE = "(sama5d27-som1-ek-optee-sd|sama7g5ek-optee-sd)"
