@@ -35,6 +35,7 @@ IMAGE_INSTALL:append:sama7g5ek = " bonnie++ iozone3 gstreamer1.0 \
 				video-capture-at91"
 
 IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples"
+IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
 # OSPI image must fit into 120 MBytes
 IMAGE_INSTALL:remove:sama7g5ek-ospi = " \
