@@ -23,9 +23,9 @@ do_compile () {
 }
 
 do_install () {
-    install -D -m 0755 --target-directory=${D}/home/root/ ${B}/websocket
+    install -D -m 0755 --target-directory=${D}${ROOT_HOME} ${B}/websocket
 }
 
-FILES:${PN} += "/home/root/"
+FILES:${PN} += "${ROOT_HOME}"
 
 COMPATIBLE_MACHINE = "(at91sam9|sama5)"

@@ -23,9 +23,9 @@ SRC_URI = " file://Start_AP.sh \
             file://Start_STA.sh \
             "
 do_install () {
-    install -D -m 0755 --target-directory=${D}/home/root/ ${WORKDIR}/Start_*
+    install -D -m 0755 --target-directory=${D}${ROOT_HOME} ${WORKDIR}/Start_*
 }
 
-FILES:${PN} += "/home/root/*"
+FILES:${PN} += "${ROOT_HOME}"
 
 COMPATIBLE_MACHINE = "(at91sam9|sama5)"
