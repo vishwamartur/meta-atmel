@@ -9,25 +9,26 @@ PACKAGES = "\
 "
 DEPENDS = " libegt"
 
-SRC_URI = "gitsm://github.com/linux4sam/egt-thermostat.git;protocol=https;branch=master"
+SRC_URI = "gitsm://github.com/linux4sam/egt-samples.git;protocol=https;branch=master "
 
-SRCREV = "b9b6c0a3393e8ef4008ba40b09f005bf57c4216a"
+PV = "1.6+git${SRCPV}"
+SRCREV = "607288de066239e2b472b716a45c43b0aa5cca87"
 
 S = "${WORKDIR}/git"
 
-# out-of-tree building doesn't appear to work for this package.
-B = "${S}"
-
-inherit pkgconfig autotools gettext siteinfo
+inherit pkgconfig autotools gettext
 
 do_configure:prepend() {
-	( cd ${S};
-	${S}/autogen.sh; cd -)
+     ( cd ${S}; ${S}/autogen.sh; cd -)
 }
 
 FILES:${PN} += " \
-    ${datadir}/egt/* \
+    /usr/share/egt/* \
 "
+# out-of-tree building doesn't appear to work for this package.
+B = "${S}"
+
+EXTRA_OECONF = "--program-prefix='egt_'"
 
 python __anonymous () {
     endianness = d.getVar('SITEINFO_ENDIANNESS')
