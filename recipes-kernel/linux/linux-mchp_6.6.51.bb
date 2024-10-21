@@ -22,7 +22,7 @@ sama7g5ek-optee-sd	  = " file://sama7g5ek-linux-optee.cfg \
                               file://sama7g5ek/0001-dts-include-optee-dtsi.patch \
                               "
 
-SRCREV = "a9461f74c772244eb97f6841f19f84a6f6730c37"
+SRCREV = "4b6e171642a4167dbbb572d5101681f0b2e75772"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 
 KERNEL_MODULE_AUTOLOAD:append:sama5d27-wlsom1-ek-sd = " wilc-sdio"
