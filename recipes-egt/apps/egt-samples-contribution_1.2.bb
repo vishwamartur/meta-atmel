@@ -12,7 +12,7 @@ DEPENDS = " libegt"
 SRC_URI = "git://github.com/linux4sam/egt-samples-contribution.git;protocol=https;branch=master "
 
 PV = "1.2+git${SRCPV}"
-SRCREV = "8e1feb4bcd9f7b8921b3a44719dc37a40942b424"
+SRCREV = "c2e5bc250a40d032ea93c2ef7c76c6b350b7d020"
 
 S = "${WORKDIR}/git"
 
