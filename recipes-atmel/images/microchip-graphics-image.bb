@@ -137,6 +137,8 @@ IMAGE_INSTALL:append:sama5d2 = " video-capture-at91 \
 				libv4l v4l-utils media-ctl yavta \
 				"
 
+IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages"
+
 inherit core-image siteinfo
 
 TOOLCHAIN_HOST_TASK += "nativesdk-swig"
