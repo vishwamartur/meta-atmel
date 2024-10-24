@@ -1,7 +1,7 @@
 DESCRIPTION = "Microchip CryptoAuthentication Library"
 
 LICENSE = "MICROCHIP_CAL"
-LIC_FILES_CHKSUM = "file://license.txt;endline=18;md5=f11e57edbc34c369787823ff61158496"
+LIC_FILES_CHKSUM = "file://license.txt;endline=18;md5=7a38fc60c2fcad312a03b337dea8a96d"
 
 SRC_URI = "git://github.com/MicrochipTech/cryptoauthlib.git;branch=main;protocol=https \
            file://cryptoauthlib.module \
@@ -9,7 +9,7 @@ SRC_URI = "git://github.com/MicrochipTech/cryptoauthlib.git;branch=main;protocol
            "
 
 PV = "1.0+git${SRCPV}"
-SRCREV = "9a5b711582b3df0ed97fa6147c899eb856c52d34"
+SRCREV = "5d8c9880f5c64a8664d5781c691cbc313cd4de76"
 
 S = "${WORKDIR}/git"
 
@@ -54,6 +54,7 @@ i2c_addr() {
 }
 
 do_install:append() {
+
     i2c_addr ${MACHINE}
 
     # Install module and conf for all machines
@@ -69,7 +70,7 @@ do_install:append() {
     fi
 }
 
-FILES:${PN} = "${libdir}/libcryptoauth.so \
+FILES:${PN} = "${libdir}/* \
 	       ${sysconfdir}/cryptoauthlib/cryptoauthlib.conf \
 	       ${localstatedir}/lib/cryptoauthlib/slot.conf.tmpl \
 	       ${datadir}/p11-kit/modules/cryptoauthlib.module \
@@ -78,3 +79,5 @@ FILES:${PN} = "${libdir}/libcryptoauth.so \
 FILES:${PN}-dev = " \
 		${includedir}/cryptoauthlib/* \
 "
+
+INSANE_SKIP:${PN} += "dev-so"
