@@ -91,6 +91,9 @@ IMAGE_INSTALL += "\
 	cryptoauthlib \
 	python3-cryptoauthlib \
 	p11-kit \
+	strace \
+	ltrace \
+	stress-ng \
 "
 
 IMAGE_INSTALL:append:at91sam9m10g45 = " \

@@ -13,7 +13,10 @@ IMAGE_INSTALL += "\
     cryptoauthlib \
     python3-cryptoauthlib \
     p11-kit \
-    "
+    strace \
+    ltrace \
+    stress-ng \
+"
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"
 IMAGE_INSTALL:append:sama5d3 = " nodejs nodejs-npm"
