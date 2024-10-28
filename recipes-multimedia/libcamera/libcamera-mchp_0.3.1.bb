@@ -21,14 +21,15 @@ PE = "1"
 
 S = "${WORKDIR}/git"
 
-DEPENDS = "python3-pyyaml-native python3-jinja2-native python3-ply-native python3-jinja2-native udev gnutls chrpath-native libevent libyaml"
+DEPENDS = "python3-pyyaml-native python3-jinja2-native python3-ply-native python3-jinja2-native udev gnutls chrpath-native libevent libyaml jpeg libpng"
 DEPENDS += "${@bb.utils.contains('DISTRO_FEATURES', 'qt', 'qtbase qtbase-native', '', d)}"
 
 PACKAGES =+ "${PN}-gst ${PN}-pycamera ${PN}-ipa ${PN}-pipelines"
 
-PACKAGECONFIG ??= ""
+PACKAGECONFIG ??= "mchpcam"
 PACKAGECONFIG[gst] = "-Dgstreamer=enabled,-Dgstreamer=disabled,gstreamer1.0 gstreamer1.0-plugins-base"
 PACKAGECONFIG[pycamera] = "-Dpycamera=enabled,-Dpycamera=disabled,python3 python3-pybind11"
+PACKAGECONFIG[mchpcam] = "-Dmchpcam=enabled,-Dmchpcam=disabled"
 
 LIBCAMERA_PIPELINES ??= "auto"
 
@@ -36,6 +37,7 @@ EXTRA_OEMESON = " \
     -Dpipelines=${LIBCAMERA_PIPELINES} \
     -Dv4l2=true \
     -Dcam=enabled \
+    -Dmchpcam=${@bb.utils.contains('PACKAGECONFIG', 'mchpcam', 'enabled', 'disabled', d)} \
     -Dlc-compliance=disabled \
     -Dtest=false \
     -Ddocumentation=disabled \
@@ -52,6 +54,12 @@ do_configure:prepend() {
 do_install:append() {
     chrpath -d ${D}${libdir}/libcamera.so
     chrpath -d ${D}${libexecdir}/libcamera/v4l2-compat.so
+    if ${@bb.utils.contains('PACKAGECONFIG', 'mchpcam', 'true', 'false', d)}; then
+        install -d ${D}${bindir}
+        if [ -f ${B}/src/apps/mchpcam/mchpcam-still ]; then
+            install -m 0755 ${B}/src/apps/mchpcam/mchpcam-still ${D}${bindir}
+        fi
+    fi
 }
 
 do_package:append() {
@@ -70,7 +78,7 @@ do_package_recalculate_ipa_signatures() {
     ${S}/src/ipa/ipa-sign-install.sh ${B}/src/ipa-priv-key.pem "${modules}"
 }
 
-FILES:${PN} += " ${libexecdir}/libcamera/v4l2-compat.so ${libdir}/libcamera/*.so* ${datadir}/libcamera"
+FILES:${PN} += " ${libexecdir}/libcamera/v4l2-compat.so ${libdir}/libcamera/*.so* ${datadir}/libcamera ${bindir}/mchpcam-*"
 FILES:${PN}-gst = "${libdir}/gstreamer-1.0"
 FILES:${PN}-ipa = "${libdir}/libcamera/ipa_*.so* ${libdir}/libcamera/*.so.sign ${datadir}/libcamera/ipa/*"
 FILES:${PN}-pipelines = "${datadir}/libcamera/pipeline/*"
