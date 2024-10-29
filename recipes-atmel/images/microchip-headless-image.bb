@@ -40,7 +40,8 @@ IMAGE_INSTALL:append:sama7g5ek = " bonnie++ iozone3 gstreamer1.0 \
 IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples"
 IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
-IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages"
+IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
+					      bluez-ble-sw "
 
 # OSPI image must fit into 120 MBytes
 IMAGE_INSTALL:remove:sama7g5ek-ospi = " \
