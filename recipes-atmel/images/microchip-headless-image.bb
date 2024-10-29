@@ -34,20 +34,21 @@ IMAGE_INSTALL:append:sama7g5ek = " bonnie++ iozone3 gstreamer1.0 \
 				gstreamer1.0-plugins-bad \
 				gstreamer1.0-plugins-good \
 				gstreamer1.0-plugins-ugly fswebcam ffmpeg \
-				libv4l v4l-utils media-ctl libcamera yavta \
+				libv4l v4l-utils media-ctl libcamera-mchp yavta \
 				video-capture-at91"
 
 IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples"
 IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
-					      bluez-ble-sw "
+					      bluez-ble-sw \
+					      libcamera-mchp "
 
 # OSPI image must fit into 120 MBytes
 IMAGE_INSTALL:remove:sama7g5ek-ospi = " \
 	bonnie++ iozone3 gstreamer1.0 gstreamer1.0-plugins-bad \
 	gstreamer1.0-plugins-good gstreamer1.0-plugins-ugly \
-	ffmpeg libcamera yavta \
+	ffmpeg libcamera-mchp yavta \
 	cryptoauthlib python3-cryptoauthlib p11-kit \
 	packagegroup-base-usbhost \
 	mpg123 mpio rsync \
