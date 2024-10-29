@@ -94,6 +94,7 @@ IMAGE_INSTALL += "\
 	strace \
 	ltrace \
 	stress-ng \
+	systemd-analyze \
 "
 
 IMAGE_INSTALL:append:at91sam9m10g45 = " \

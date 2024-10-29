@@ -16,6 +16,7 @@ IMAGE_INSTALL += "\
     strace \
     ltrace \
     stress-ng \
+    systemd-analyze \
 "
 
 IMAGE_INSTALL:append:sama5d2 = " nodejs nodejs-npm"
@@ -42,6 +43,7 @@ IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
 					      bluez-ble-sw \
+					      video-capture-at91 \
 					      libcamera-mchp "
 
 # OSPI image must fit into 120 MBytes
