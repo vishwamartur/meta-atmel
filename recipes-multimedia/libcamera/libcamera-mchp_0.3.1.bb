@@ -15,7 +15,7 @@ SRC_URI = " \
         file://0001-rpi-Use-malloc-instead-of-variable-length-arrays.patch \
 "
 
-SRCREV = "021daf4342862603fabca7ed91c64e17eebfe7eb"
+SRCREV = "c018384960694ffc9f13f6a674e75cb6624ae489"
 
 PE = "1"
 
