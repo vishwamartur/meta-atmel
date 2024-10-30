@@ -42,7 +42,7 @@ IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-exa
 IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
-					      bluez-ble-sw \
+					      ble-bluez-hci-apps \
 					      video-capture-at91 \
 					      libcamera-mchp "
 

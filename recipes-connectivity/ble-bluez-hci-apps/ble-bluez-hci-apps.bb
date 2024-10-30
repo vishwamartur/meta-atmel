@@ -1,11 +1,11 @@
 SUMMARY = "BlueZ BLE Applications"
 DESCRIPTION = "BlueZ BLE UART and DFU Applications"
 LICENSE = "MIT"
-LIC_FILES_CHKSUM = "file://readme;md5=ab833928dd4d2429b09fc5d3497d811c"
+LIC_FILES_CHKSUM = "file://README;md5=5413bb09d9a7d0e0baa6b9bb69034212"
 FILESEXTRAPATHS:prepend := "${THISDIR}/files:"
 
 SRC_URI = "git://github.com/linux4microchip/ble_bluez_hci_apps.git;protocol=https;branch=master"
-SRCREV	= "b79d1c0938ce6f853ef12bf611e4a522ed6b2ffe"
+SRCREV	= "01f2dbbdbd5c7d4201a0cb1aa201980d50f670eb"
 
 PV = "1.0+git${SRCPV}"
 S = "${WORKDIR}/git"

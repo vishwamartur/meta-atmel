@@ -139,7 +139,7 @@ IMAGE_INSTALL:append:sama5d2 = " video-capture-at91 \
 				"
 
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
-					      bluez-ble-sw \
+					      ble-bluez-hci-apps \
 					      libcamera-mchp "
 
 inherit core-image siteinfo
