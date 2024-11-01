@@ -25,6 +25,7 @@ IMAGE_INSTALL:append:sama5d4 = " nodejs nodejs-npm"
 
 IMAGE_INSTALL:append:sama5d2-ptc-ek = " ptc-examples"
 IMAGE_INSTALL:append:sama5d2-ptc-ek-sd = " ptc-examples"
+IMAGE_INSTALL:append:sama5d27-som1-ek-sd = " wilc-demo-fs-overlay "
 IMAGE_INSTALL:append:sama5d27-wlsom1-ek-sd = " ptc-examples nginx \
 				wilc-demo-fs-overlay \
 				wilc-ble-demo \
@@ -38,13 +39,19 @@ IMAGE_INSTALL:append:sama7g5ek = " bonnie++ iozone3 gstreamer1.0 \
 				libv4l v4l-utils media-ctl libcamera-mchp yavta \
 				video-capture-at91"
 
-IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples"
+IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples \
+				wilc-demo-fs-overlay "
 IMAGE_INSTALL:append:sama7g5ek-optee-sd = " optee-os optee-test optee-examples"
 
+IMAGE_INSTALL:append:sam9x60-curiosity = " wilc-demo-fs-overlay "
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " wilc-demo-fs-overlay "
+
+IMAGE_INSTALL:append:sam9x75-curiosity = " wilc-demo-fs-overlay "
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
 					      ble-bluez-hci-apps \
 					      video-capture-at91 \
-					      libcamera-mchp "
+					      libcamera-mchp \
+					      wilc-demo-fs-overlay "
 
 # OSPI image must fit into 120 MBytes
 IMAGE_INSTALL:remove:sama7g5ek-ospi = " \

@@ -130,6 +130,7 @@ IMAGE_INSTALL:append:sama5d4 = " \
 IMAGE_INSTALL:append:sama5d2-ptc-ek = " ptc-examples"
 IMAGE_INSTALL:append:sama5d2-ptc-ek-sd = " ptc-examples"
 
+IMAGE_INSTALL:append:sama5d27-som1-ek-sd = " wilc-demo-fs-overlay "
 IMAGE_INSTALL:append:sama5d27-wlsom1-ek-sd = " ptc-examples \
                                                wilc-demo-fs-overlay \
                                                "
@@ -137,10 +138,14 @@ IMAGE_INSTALL:append:sama5d27-wlsom1-ek-sd = " ptc-examples \
 IMAGE_INSTALL:append:sama5d2 = " video-capture-at91 \
 				libv4l v4l-utils media-ctl yavta \
 				"
+IMAGE_INSTALL:append:sam9x60-curiosity = " wilc-demo-fs-overlay "
+IMAGE_INSTALL:append:sam9x60-curiosity-sd = " wilc-demo-fs-overlay "
 
+IMAGE_INSTALL:append:sam9x75-curiosity = " wilc-demo-fs-overlay "
 IMAGE_INSTALL:append:sam9x75-curiosity-sd = " nginx wireless-kit-webpages \
 					      ble-bluez-hci-apps \
-					      libcamera-mchp "
+					      libcamera-mchp \
+					      wilc-demo-fs-overlay "
 
 inherit core-image siteinfo
 
@@ -152,4 +157,5 @@ TOOLCHAIN_TARGET_TASK += " \
     lua-staticdev \
     libstdc++-dev \
     "
-IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples"
+IMAGE_INSTALL:append:sama5d27-som1-ek-optee-sd = " optee-os optee-test optee-examples \
+				wilc-demo-fs-overlay "
